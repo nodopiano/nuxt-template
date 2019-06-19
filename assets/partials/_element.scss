@@ -1,0 +1,96 @@
+// $pagination-color: #f8f9fa;
+$pagination-color: #e9e9e9;
+$sort-column-color: #F1F5F8;
+$pagination-size: 2rem;
+
+$--color-primary:#1389dd;
+$--pagination-fill: white;
+$--pagination-button-disabled-fill: $pagination-color;
+$--pagination-button-color: $pagination-color;
+$--pagination-hover-color: $pagination-color;
+$--pagination-button-width: $pagination-size;
+$--pagination-button-height: $pagination-size;
+$--pagination-font-size: 0.8rem;
+/* icon font path, required */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";
+
+.btn-prev,
+.btn-next,
+.el-pager li {
+  border-radius: 50%;
+  margin: 0 .5rem;
+
+  &.disabled {
+    color: $--color-text-placeholder;
+  }
+
+  @apply shadow;
+}
+
+.el-pager li.active {
+  background: $--color-primary;
+  color: $--color-white;
+  cursor: default;
+
+  @apply shadow;
+}
+
+.el-pagination {
+  .btn-prev,
+  .btn-next {
+    padding: 0;
+  }
+}
+
+.el-menu {
+  background-color: transparent;
+
+  & .el-submenu__title {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.el-menu--horizontal > .el-menu-item:not(.is-disabled):hover, .el-menu--horizontal > .el-menu-item:not(.is-disabled):focus {
+  background-color: transparent;
+}
+
+.el-menu-item {
+  padding: 0;
+
+  & > a {
+    padding: 0 20px;
+  }
+}
+
+.el-table {
+  &__body {
+    .cell {
+      padding: 0;
+    }
+  }
+
+  &__header {
+    th {
+      @apply text-grey-lightest bg-grey;
+      text-transform: uppercase;
+    }
+  }
+
+  .sort-caret {
+    &.ascending {
+      border-bottom-color: $sort-column-color;
+    }
+
+    &.descending {
+      border-top-color: $sort-column-color;
+    }
+  }
+}
+
+.el-select-dropdown.el-popper {
+  z-index: 3000 !important;
+}

@@ -1,0 +1,93 @@
+{
+  "data": {
+    "route": "index",
+    "columns": [
+      {
+        "type": "column",
+        "sortable": true,
+        "label": "Prenotazione",
+        "readonly": false,
+        "required": false,
+        "traverse": "id",
+        "placeholder": false,
+        "link": {
+          "base": "bookings",
+          "field": "id"
+        }
+      },
+      {
+        "type": "column",
+        "sortable": false,
+        "label": "Imbarcazione \/ Proprietario",
+        "readonly": false,
+        "required": false,
+        "traverse": "boat.name",
+        "placeholder": false,
+        "link": {
+          "base": "boats",
+          "field": "boat.id"
+        },
+        "subtext": {
+          "traverse": "owner.name"
+        }
+      },
+      {
+        "type": "column",
+        "sortable": true,
+        "label": "Arrivo",
+        "readonly": false,
+        "required": false,
+        "traverse": "from",
+        "placeholder": false
+      },
+      {
+        "type": "column",
+        "sortable": true,
+        "label": "Partenza",
+        "readonly": false,
+        "required": false,
+        "traverse": "to",
+        "placeholder": false
+      },
+      {
+        "type": "column",
+        "sortable": true,
+        "label": "giorni",
+        "readonly": false,
+        "required": false,
+        "traverse": "days",
+        "placeholder": false
+      },
+      {
+        "type": "column",
+        "sortable": true,
+        "label": "Stato",
+        "readonly": false,
+        "required": false,
+        "traverse": "status",
+        "placeholder": false
+      },
+      {
+        "type": "column",
+        "sortable": true,
+        "label": "Porto",
+        "readonly": false,
+        "required": false,
+        "traverse": "dock.port.name",
+        "placeholder": false,
+        "subtext": {
+          "traverse": "dock.name"
+        }
+      },
+      {
+        "type": "column",
+        "sortable": true,
+        "label": "Posto barca",
+        "readonly": false,
+        "required": false,
+        "traverse": "berth",
+        "placeholder": false
+      }
+    ]
+  }
+}

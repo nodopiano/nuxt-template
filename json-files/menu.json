@@ -1,0 +1,32 @@
+[
+  {
+    "label": "Validazione prenotazioni",
+    "icon": "validate",
+    "url": "/validations"
+  },
+  {
+    "label": "Prenotazioni",
+    "icon": "timetable",
+    "url": "/bookings"
+  },
+  {
+    "label": "Proprietari",
+    "icon": "avatar",
+    "url": "/owners"
+  },
+  {
+    "label": "Imbarcazioni",
+    "icon": "sailboat",
+    "url": "/boats"
+  },
+  {
+    "label": "Report",
+    "icon": "bars",
+    "url": "/reports"
+  },
+  {
+    "label": "Impostazioni",
+    "icon": "controls",
+    "url": "/settings"
+  }
+]

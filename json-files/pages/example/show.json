@@ -1,0 +1,847 @@
+{
+  "data": {
+    "route": "show",
+    "fillable": [
+      "from",
+      "to",
+      "owner_id",
+      "boat_id",
+      "rate_id",
+      "days",
+      "berth",
+      "dock_id",
+      "annual",
+      "energy",
+      "commander",
+      "commander_phone"
+    ],
+    "main": {
+      "label": "Riepilogo",
+      "blocks": [
+        {
+          "component": "form",
+          "header": "Prenotazione",
+          "fields": [
+            {
+              "type": "date",
+              "sortable": false,
+              "label": "In porto dal",
+              "readonly": false,
+              "required": false,
+              "traverse": "from",
+              "placeholder": false,
+              "format": "dd-mm-yyyy"
+            },
+            {
+              "type": "date",
+              "sortable": false,
+              "label": "Al",
+              "readonly": false,
+              "required": false,
+              "traverse": "to",
+              "placeholder": false
+            },
+            {
+              "type": "text",
+              "sortable": false,
+              "label": "Giorni in porto",
+              "readonly": true,
+              "required": false,
+              "traverse": "days",
+              "placeholder": false
+            },
+            {
+              "type": "cascader",
+              "sortable": false,
+              "label": "Porto",
+              "readonly": false,
+              "required": false,
+              "traverse": "dock_id",
+              "placeholder": false,
+              "options": [
+                {
+                  "id": 1,
+                  "label": "Cala Gavetta",
+                  "children": [
+                    {
+                      "id": 5,
+                      "label": "Pontile 2"
+                    },
+                    {
+                      "id": 6,
+                      "label": "Pontile 3"
+                    },
+                    {
+                      "id": 7,
+                      "label": "Pontile 4"
+                    },
+                    {
+                      "id": 2,
+                      "label": "Calata Millelire A"
+                    },
+                    {
+                      "id": 3,
+                      "label": "Calata Millelire B"
+                    },
+                    {
+                      "id": 4,
+                      "label": "Calata Millelire C"
+                    },
+                    {
+                      "id": 1,
+                      "label": "Banchina incrociatore Trieste"
+                    }
+                  ]
+                },
+                {
+                  "id": 3,
+                  "label": "Cala Mangiavolpe",
+                  "children": [
+                    {
+                      "id": 9,
+                      "label": "Banchina medaglie d'Oro"
+                    }
+                  ]
+                },
+                {
+                  "id": 2,
+                  "label": "Cala Balbiano",
+                  "children": [
+                    {
+                      "id": 8,
+                      "label": "Cala Balbiano"
+                    }
+                  ]
+                },
+                {
+                  "id": 4,
+                  "label": "Approdo Stagnali",
+                  "children": [
+                    {
+                      "id": 10,
+                      "label": "banchina di prova"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "sortable": false,
+              "label": "Posto Barca",
+              "readonly": false,
+              "required": false,
+              "traverse": "berth",
+              "placeholder": false
+            }
+          ]
+        },
+        {
+          "component": "form",
+          "header": "Comandante",
+          "fields": [
+            {
+              "type": "text",
+              "sortable": false,
+              "label": "Comandante",
+              "readonly": false,
+              "required": false,
+              "traverse": "commander",
+              "placeholder": false
+            },
+            {
+              "type": "text",
+              "sortable": false,
+              "label": "Telefono Comandante",
+              "readonly": false,
+              "required": false,
+              "traverse": "commander_phone",
+              "placeholder": false
+            }
+          ]
+        },
+        {
+          "component": "form",
+          "header": "Tariffe Applicate",
+          "fields": [
+            {
+              "type": "toggle",
+              "sortable": false,
+              "label": "Annuale",
+              "readonly": false,
+              "required": false,
+              "traverse": "annual",
+              "placeholder": false,
+              "active_text": "on",
+              "inactive_text": "off"
+            },
+            {
+              "type": "toggle",
+              "sortable": false,
+              "label": "Comprende energia elettrica",
+              "readonly": false,
+              "required": false,
+              "traverse": "energy",
+              "placeholder": false,
+              "active_text": "on",
+              "inactive_text": "off"
+            }
+          ]
+        },
+        {
+          "component": "table",
+          "traverse": "rates",
+          "hide_button": true,
+          "columns": [
+            {
+              "type": "column",
+              "sortable": false,
+              "label": "Tariffa",
+              "readonly": false,
+              "required": false,
+              "traverse": "name",
+              "placeholder": false
+            },
+            {
+              "type": "column",
+              "sortable": false,
+              "label": "Giorni",
+              "readonly": false,
+              "required": false,
+              "traverse": "count",
+              "placeholder": false
+            },
+            {
+              "type": "column",
+              "sortable": false,
+              "label": "Prezzo al giorno al metro quadro",
+              "readonly": false,
+              "required": false,
+              "traverse": "price",
+              "placeholder": false
+            },
+            {
+              "type": "column",
+              "sortable": false,
+              "label": "Prezzo totale",
+              "readonly": false,
+              "required": false,
+              "traverse": "total",
+              "placeholder": false
+            },
+            {
+              "type": "column",
+              "sortable": false,
+              "label": "Note",
+              "readonly": false,
+              "required": false,
+              "traverse": "notes",
+              "placeholder": false
+            }
+          ]
+        }
+      ]
+    },
+    "pages": {
+      "owner": {
+        "label": "Proprietario",
+        "blocks": [
+          {
+            "component": "form",
+            "header": "Proprietario",
+            "fields": [
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Nome",
+                "readonly": true,
+                "required": false,
+                "traverse": "owner.name",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Codice Fiscale",
+                "readonly": true,
+                "required": false,
+                "traverse": "owner.tax_id",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Nazionalit\u00e0",
+                "readonly": true,
+                "required": false,
+                "traverse": "owner.nationality",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Lingua",
+                "readonly": true,
+                "required": false,
+                "traverse": "owner.lang",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Numero di telefono",
+                "readonly": true,
+                "required": false,
+                "traverse": "owner.phone",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Indirizzo",
+                "readonly": true,
+                "required": false,
+                "traverse": "owner.address",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Citt\u00e0",
+                "readonly": true,
+                "required": false,
+                "traverse": "owner.city",
+                "placeholder": false
+              },
+              {
+                "type": "date",
+                "sortable": false,
+                "label": "Data di nascita",
+                "readonly": true,
+                "required": false,
+                "traverse": "owner.birthdate",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Luogo di nascita",
+                "readonly": true,
+                "required": false,
+                "traverse": "owner.place_birth",
+                "placeholder": false
+              }
+            ]
+          }
+        ]
+      },
+      "boat": {
+        "label": "Imbarcazione",
+        "blocks": [
+          {
+            "component": "form",
+            "header": "Imbarcazione",
+            "fields": [
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Nome",
+                "readonly": true,
+                "required": false,
+                "traverse": "boat.name",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Matricola (cin)",
+                "readonly": true,
+                "required": false,
+                "traverse": "boat.cin",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Colore",
+                "readonly": true,
+                "required": false,
+                "traverse": "boat.color",
+                "placeholder": false
+              },
+              {
+                "type": "select",
+                "sortable": false,
+                "label": "Tipo di imbarcazione",
+                "readonly": true,
+                "required": false,
+                "traverse": "boat.type.id",
+                "placeholder": false,
+                "options": [
+                  {
+                    "id": 1,
+                    "name": "vela"
+                  },
+                  {
+                    "id": 2,
+                    "name": "motore"
+                  },
+                  {
+                    "id": 3,
+                    "name": "Propulsione mista"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Modello",
+                "readonly": true,
+                "required": false,
+                "traverse": "boat.model",
+                "placeholder": false
+              },
+              {
+                "type": "flag",
+                "sortable": false,
+                "label": "Bandiera",
+                "readonly": true,
+                "required": false,
+                "traverse": "boat.nationality",
+                "placeholder": false
+              },
+              {
+                "type": "double",
+                "sortable": false,
+                "label": "Lunghezza",
+                "readonly": true,
+                "required": false,
+                "traverse": "boat.length",
+                "placeholder": false,
+                "precision": 0.01
+              },
+              {
+                "type": "double",
+                "sortable": false,
+                "label": "Larghezza",
+                "readonly": true,
+                "required": false,
+                "traverse": "boat.width",
+                "placeholder": false,
+                "precision": 0.01
+              },
+              {
+                "type": "double",
+                "sortable": false,
+                "label": "Pescaggio",
+                "readonly": true,
+                "required": false,
+                "traverse": "boat.height",
+                "placeholder": false,
+                "precision": 0.01
+              },
+              {
+                "type": "double",
+                "sortable": false,
+                "label": "Superficie",
+                "readonly": true,
+                "required": false,
+                "traverse": "boat.square_meters",
+                "placeholder": false,
+                "precision": 0.1
+              }
+            ]
+          }
+        ]
+      },
+      "services": {
+        "label": "Servizi",
+        "blocks": [
+          {
+            "component": "repeater",
+            "traverse": "services",
+            "repeat": {
+              "fields": [
+                {
+                  "type": "label",
+                  "traverse": "name",
+                  "readonly": true
+                },
+                {
+                  "type": "number",
+                  "traverse": "quantity",
+                  "label": "Quantit\u00e0",
+                  "readonly": true,
+                  "append": {
+                    "traverse": "unit"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "create": {
+          "component": "repeater",
+          "resources": [
+            {
+              "id": 3,
+              "name": "Tariffa annuale di ormeggio",
+              "unit": "mq",
+              "price": "15.12",
+              "created_at": "2019-03-27 11:19:22",
+              "updated_at": "2019-04-05 07:06:34"
+            },
+            {
+              "id": 4,
+              "name": "Tariffa acqua + corrente elettrica (diporto a noleggio)",
+              "unit": "ml",
+              "price": "1.51",
+              "created_at": "2019-03-27 11:20:08",
+              "updated_at": "2019-04-05 07:07:04"
+            },
+            {
+              "id": 2,
+              "name": "Acqua + energia elettrica (transito)",
+              "unit": "ml",
+              "price": "1",
+              "created_at": "2019-03-27 11:18:35",
+              "updated_at": "2019-04-05 07:07:18"
+            },
+            {
+              "id": 1,
+              "name": "Tariffa rifiuti (transito)",
+              "unit": "num",
+              "price": "0.51",
+              "created_at": "2019-03-27 11:17:35",
+              "updated_at": "2019-04-05 07:07:19"
+            },
+            {
+              "id": 5,
+              "name": "Energia elettrica (per tariffa annuale)",
+              "unit": "mq",
+              "price": "0.1",
+              "created_at": "2019-03-27 11:21:36",
+              "updated_at": "2019-04-05 07:08:27"
+            },
+            {
+              "id": 7,
+              "name": "Energia elettrica 10% della tariffa annuale x i mesi di utilizzo",
+              "unit": "num",
+              "price": "9",
+              "created_at": "2019-03-27 14:20:04",
+              "updated_at": "2019-04-05 07:09:18"
+            }
+          ],
+          "repeat": {
+            "fields": [
+              {
+                "type": "label",
+                "traverse": "name"
+              },
+              {
+                "type": "number",
+                "traverse": "quantity",
+                "label": "Quantit\u00e0",
+                "append": {
+                  "traverse": "unit"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "documents": {
+        "label": "Documenti",
+        "blocks": [
+          {
+            "component": "uploader",
+            "update": "documents",
+            "url": "https://jsonplaceholder.typicode.com/posts/"
+          },
+          {
+            "component": "table",
+            "traverse": "documents",
+            "hide_button": true,
+            "columns": [
+              {
+                "type": "column",
+                "sortable": false,
+                "label": "Titolo",
+                "readonly": false,
+                "required": false,
+                "traverse": "title",
+                "placeholder": false
+              },
+              {
+                "type": "column",
+                "sortable": false,
+                "label": "Caricato il",
+                "readonly": false,
+                "required": false,
+                "traverse": "created_at",
+                "placeholder": false
+              }
+            ]
+          }
+        ],
+        "create": []
+      },
+      "payments": {
+        "label": "Pagamenti",
+        "blocks": [
+          {
+            "component": "repeater",
+            "traverse": "payments",
+            "repeat": {
+              "fields": [
+                {
+                  "type": "select",
+                  "sortable": false,
+                  "label": "Metodo di pagamento",
+                  "readonly": true,
+                  "required": false,
+                  "traverse": "payment_method_id",
+                  "placeholder": false,
+                  "options": [
+                    {
+                      "id": 1,
+                      "name": "Contanti",
+                      "created_at": "2019-03-21 14:20:00",
+                      "updated_at": "2019-03-21 14:20:00"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Carta di Credito",
+                      "created_at": "2019-03-21 14:20:00",
+                      "updated_at": "2019-03-21 14:20:00"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Bancomat",
+                      "created_at": "2019-03-21 14:20:00",
+                      "updated_at": "2019-03-21 14:20:00"
+                    }
+                  ]
+                },
+                {
+                  "type": "double",
+                  "sortable": false,
+                  "label": "Ammontare",
+                  "readonly": true,
+                  "required": false,
+                  "traverse": "amount",
+                  "placeholder": false,
+                  "precision": 0.01
+                },
+                {
+                  "type": "text",
+                  "sortable": false,
+                  "label": "Note",
+                  "readonly": true,
+                  "required": false,
+                  "traverse": "notes",
+                  "placeholder": "Note varie ed eventuali"
+                },
+                {
+                  "type": "toggle",
+                  "sortable": false,
+                  "label": false,
+                  "readonly": false,
+                  "required": false,
+                  "traverse": "invoice",
+                  "placeholder": false,
+                  "active_text": "Fattura",
+                  "inactive_text": "Ricevuta"
+                }
+              ],
+              "actions": [
+                {
+                  "type": "action",
+                  "icon": "check",
+                  "color": "green",
+                  "label": "Valida",
+                  "text": "Vuoi validare questo pagamento?",
+                  "title": "Validazione del pagamento",
+                  "on_success": "Validazione eseguita con successo",
+                  "on_error": "Impossibile validare il pagamento",
+                  "traverse": "validate",
+                  "update": "payments",
+                  "url": "https:\/\/portoturistico.grop.xyz\/api\/validate",
+                  "show_if": {
+                    "traverse": "validated_on",
+                    "not": true
+                  },
+                  "method": "post",
+                  "resource": "id"
+                }
+              ]
+            }
+          },
+          {
+            "component": "form",
+            "header": "Dati di fatturazione",
+            "fields": [
+              {
+                "type": "toggle",
+                "sortable": false,
+                "label": "I dati di fatturazione differiscono dai dati del proprietario",
+                "readonly": false,
+                "required": false,
+                "traverse": "billing.from_owner",
+                "placeholder": false,
+                "active_text": "S\u00ec",
+                "inactive_text": "No"
+              }
+            ]
+          },
+          {
+            "component": "form",
+            "show": {
+              "condition": "is_set",
+              "traverse": "billing.from_owner"
+            },
+            "fields": [
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Nome e cognome",
+                "readonly": false,
+                "required": false,
+                "traverse": "billing.name",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Codice Fiscale",
+                "readonly": false,
+                "required": false,
+                "traverse": "billing.tax_id",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Indirizzo",
+                "readonly": false,
+                "required": false,
+                "traverse": "billing.address",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Citt\u00e0",
+                "readonly": false,
+                "required": false,
+                "traverse": "billing.city",
+                "placeholder": false
+              }
+            ]
+          },
+          {
+            "component": "form",
+            "show": {
+              "condition": "is_set",
+              "traverse": "billing.is_invoice"
+            },
+            "fields": [
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "Partita IVA",
+                "readonly": false,
+                "required": false,
+                "traverse": "billing.vat_id",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "codice SDI",
+                "readonly": false,
+                "required": false,
+                "traverse": "billing.sdi_code",
+                "placeholder": false
+              },
+              {
+                "type": "text",
+                "sortable": false,
+                "label": "PEC",
+                "readonly": false,
+                "required": false,
+                "traverse": "billing.pec",
+                "placeholder": false
+              }
+            ]
+          }
+        ],
+        "create": {
+          "component": "form",
+          "fields": [
+            {
+              "type": "select",
+              "sortable": false,
+              "label": "Metodo di pagamento",
+              "readonly": false,
+              "required": true,
+              "traverse": "payment_method_id",
+              "placeholder": false,
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Contanti",
+                  "created_at": "2019-03-21 14:20:00",
+                  "updated_at": "2019-03-21 14:20:00"
+                },
+                {
+                  "id": 2,
+                  "name": "Carta di Credito",
+                  "created_at": "2019-03-21 14:20:00",
+                  "updated_at": "2019-03-21 14:20:00"
+                },
+                {
+                  "id": 3,
+                  "name": "Bancomat",
+                  "created_at": "2019-03-21 14:20:00",
+                  "updated_at": "2019-03-21 14:20:00"
+                }
+              ]
+            },
+            {
+              "type": "double",
+              "sortable": false,
+              "label": "Ammontare",
+              "readonly": false,
+              "required": true,
+              "traverse": "amount",
+              "placeholder": false,
+              "precision": 0.01
+            },
+            {
+              "type": "toggle",
+              "sortable": false,
+              "label": false,
+              "readonly": false,
+              "required": false,
+              "traverse": "invoice",
+              "placeholder": false,
+              "active_text": "Fattura",
+              "inactive_text": "Ricevuta"
+            },
+            {
+              "type": "textarea",
+              "sortable": false,
+              "label": false,
+              "readonly": false,
+              "required": true,
+              "traverse": "notes",
+              "placeholder": "Note varie ed eventuali",
+              "oneline": true
+            }
+          ]
+        }
+      }
+    }
+  }
+}
